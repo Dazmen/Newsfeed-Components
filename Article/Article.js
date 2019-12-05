@@ -93,8 +93,51 @@ const data = [
     secondParagraph:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     thirdParagraph:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   }
-];
+];///////////form stretch below
+// const formData = {
+//   title: document.querySelector('#formTitle').value,
+//   date: document.querySelector('#formDate').value,
+//   firstParagraph: document.querySelector('#topic1').value,
+//   secondParagraph: document.querySelector('#topic2').value,
+//   thirdParagraph: document.querySelector('#topic3').value
+// }
+// function FormToObject(d){
+//   this.title = d.title,
+//   this.date = d.date,
+//   this.firstParagraph = d.firstParagraph,
+//   this.secondParagraph = d.secondParagraph,
+//   this.thirdParagraph = d.thirdParagraph
+// }
+// const formButton = document.querySelector('#formButton');
+// formButton.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   const newArticle = FormToObject(formData);
+//   data.push(newArticle);
+//   document.querySelector('form').reset();
+//   // Below is code trying to get the form inputs to display. Above code shows if I console.log(data) in live server.
+//   // data.forEach(d => {
+//   //   articles.append(articleCreator(d))
+//   //   })
+// })
+const addArticle = (e) => {
+  e.preventDefault();
+  formData = {
+    title: document.querySelector('#formTitle').value,
+    date: document.querySelector('#formDate').value,
+    firstParagraph: document.querySelector('#topic1').value,
+    secondParagraph: document.querySelector('#topic2').value,
+    thirdParagraph: document.querySelector('#topic3').value
+  }
+  data.push(formData);
+  for(i = data.length - 1; i < data.length; i++){
+    articles.append(articleCreator(data[i]))
+  }
+  document.querySelector('form').reset();
+}
+const formButton = document.querySelector('#formButton');
+formButton.addEventListener('click', addArticle);
 
+//////////////end form stretch
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
