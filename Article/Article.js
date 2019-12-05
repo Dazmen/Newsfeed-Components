@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title:'This is a totally pro article',
+    date:'Dec 4th, 2019',
+    firstParagraph:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    secondParagraph:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    thirdParagraph:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   }
 ];
 
@@ -112,3 +119,48 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+function articleCreator(d){
+  const articleCont = document.createElement('div');
+  articleCont.classList.add('article');
+
+  const title = document.createElement('h2');
+  articleCont.appendChild(title);
+  title.textContent = d.title;
+
+  const date = document.createElement('p');
+  date.classList.add('date');
+  articleCont.appendChild(date);
+  date.textContent = d.date;
+
+  const p1 = document.createElement('p');
+  articleCont.appendChild(p1);
+  p1.textContent = d.firstParagraph;
+
+  const p2 = document.createElement('p');
+  articleCont.appendChild(p2);
+  p2.textContent = d.secondParagraph;
+
+  const p3 = document.createElement('p');
+  articleCont.appendChild(p3);
+  p3.textContent = d.thirdParagraph;
+
+  const btnCont = document.createElement('span');
+  btnCont.classList.add('expandButton');
+  articleCont.appendChild(btnCont);
+  btnCont.addEventListener('click', (e)=>{
+    articleCont.classList.toggle('article-open');
+  });
+
+  const btnOpen = document.createElement('button');
+  btnOpen.textContent = '\u25bc';
+  btnCont.append(btnOpen);
+
+  return articleCont
+}
+
+const articles = document.querySelector('.articles');
+
+data.forEach(d => {
+articles.append(articleCreator(d))
+})
+////////////////////end of article creator
